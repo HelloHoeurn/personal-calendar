@@ -1,9 +1,9 @@
-name: Daily Schedule Reminder
+name: Event Reminder Workflow
 
 on:
   schedule:
-    # 23:00 UTC = 06:00 AM ICT (Asia/Bangkok / Siem Reap)
-    - cron: '0 23 * * *'
+    # Runs every 5 minutes
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
