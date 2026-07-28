@@ -2,50 +2,129 @@
   {
     "day": "Monday",
     "events": [
-      { "time": "08:00 - 16:30", "title": "Work" },
-      { "time": "18:00", "title": "Guitar Practice" }
+      { "time": "00:00 - 06:00", "title": "Sleep" },
+      { "time": "06:00 - 06:30", "title": "Brush Teeth & Face" },
+      { "time": "06:30 - 07:00", "title": "Morning Workout" },
+      { "time": "07:00 - 07:30", "title": "Cooking & Breakfast" },
+      { "time": "07:30 - 08:00", "title": "Shower & Dressing" },
+      { "time": "08:00 - 11:30", "title": "Work (Morning session)" },
+      { "time": "11:30 - 12:00", "title": "Lunch" },
+      { "time": "12:00 - 17:00", "title": "Work (Afternoon session)" },
+      { "time": "17:00 - 18:00", "title": "Nap" },
+      { "time": "18:00 - 18:30", "title": "Workout" },
+      { "time": "18:30 - 19:30", "title": "Shower & Dinner" },
+      { "time": "18:30 - 20:00", "title": "Guitar Lesson (General Songs)" },
+      { "time": "20:00 - 22:00", "title": "Research and Coding" },
+      { "time": "22:00 - 23:00", "title": "Reading" },
+      { "time": "23:00 - 00:00", "title": "Sleep" }
     ]
   },
   {
     "day": "Tuesday",
     "events": [
-      { "time": "08:00 - 16:30", "title": "Work" },
-      { "time": "18:00", "title": "Football / Soccer" }
+      { "time": "00:00 - 06:00", "title": "Sleep" },
+      { "time": "06:00 - 06:30", "title": "Brush Teeth & Face" },
+      { "time": "06:30 - 07:00", "title": "Morning Workout" },
+      { "time": "07:00 - 07:30", "title": "Cooking & Breakfast" },
+      { "time": "07:30 - 08:00", "title": "Shower & Dressing" },
+      { "time": "08:00 - 11:30", "title": "Work (Morning session)" },
+      { "time": "11:30 - 12:00", "title": "Lunch" },
+      { "time": "12:00 - 17:00", "title": "Work (Afternoon session)" },
+      { "time": "17:00 - 18:00", "title": "Nap / Rest" },
+      { "time": "18:30 - 20:00", "title": "Football" },
+      { "time": "20:00 - 20:30", "title": "Shower" },
+      { "time": "20:30 - 22:00", "title": "Research and Coding" },
+      { "time": "22:00 - 23:00", "title": "Reading" },
+      { "time": "23:00 - 00:00", "title": "Sleep" }
     ]
   },
   {
     "day": "Wednesday",
     "events": [
-      { "time": "08:00 - 16:30", "title": "Work" },
-      { "time": "18:00", "title": "Reading" }
+      { "time": "00:00 - 06:00", "title": "Sleep" },
+      { "time": "06:00 - 06:30", "title": "Brush Teeth & Face" },
+      { "time": "06:30 - 07:00", "title": "Morning Workout" },
+      { "time": "07:00 - 07:30", "title": "Cooking & Breakfast" },
+      { "time": "07:30 - 08:00", "title": "Shower & Dressing" },
+      { "time": "08:00 - 11:30", "title": "Work (Morning session)" },
+      { "time": "11:30 - 12:00", "title": "Lunch" },
+      { "time": "12:00 - 17:00", "title": "Work (Afternoon session)" },
+      { "time": "17:00 - 18:00", "title": "Nap" },
+      { "time": "18:00 - 18:30", "title": "Workout" },
+      { "time": "18:30 - 20:00", "title": "Reading" },
+      { "time": "20:00 - 22:00", "title": "Research and Coding" },
+      { "time": "22:00 - 23:00", "title": "Free / Relaxation" },
+      { "time": "23:00 - 00:00", "title": "Sleep" }
     ]
   },
   {
     "day": "Thursday",
     "events": [
-      { "time": "08:00 - 16:30", "title": "Work" },
-      { "time": "18:00", "title": "Guitar Practice" }
+      { "time": "00:00 - 06:00", "title": "Sleep" },
+      { "time": "06:00 - 06:30", "title": "Brush Teeth & Face" },
+      { "time": "06:40 - 07:45", "title": "Meeting with Christian Brothers" },
+      { "time": "07:45 - 08:00", "title": "Prep / Travel to Work" },
+      { "time": "08:00 - 11:30", "title": "Work (Morning session)" },
+      { "time": "11:30 - 12:00", "title": "Lunch" },
+      { "time": "12:00 - 17:00", "title": "Work (Afternoon session)" },
+      { "time": "17:00 - 18:00", "title": "Nap" },
+      { "time": "18:00 - 18:30", "title": "Workout" },
+      { "time": "18:30 - 20:00", "title": "Guitar Lesson (Worship Songs)" },
+      { "time": "20:00 - 22:00", "title": "Research and Coding" },
+      { "time": "22:00 - 23:00", "title": "Reading" },
+      { "time": "23:00 - 00:00", "title": "Sleep" }
     ]
   },
   {
     "day": "Friday",
     "events": [
-      { "time": "08:00 - 16:30", "title": "Work" },
-      { "time": "18:00", "title": "Hanging out" }
+      { "time": "00:00 - 06:00", "title": "Sleep" },
+      { "time": "06:00 - 06:30", "title": "Brush Teeth & Face" },
+      { "time": "06:30 - 07:00", "title": "Morning Workout" },
+      { "time": "07:00 - 07:30", "title": "Cooking & Breakfast" },
+      { "time": "07:30 - 08:00", "title": "Shower & Dressing" },
+      { "time": "08:00 - 11:30", "title": "Work (Morning session)" },
+      { "time": "11:30 - 12:00", "title": "Lunch" },
+      { "time": "12:00 - 17:00", "title": "Work (Afternoon session)" },
+      { "time": "17:00 - 18:00", "title": "Nap / Rest" },
+      { "time": "18:00 - 19:30", "title": "Dinner / Prep" },
+      { "time": "19:30 - 21:00", "title": "Soccer" },
+      { "time": "21:00 - 21:30", "title": "Shower" },
+      { "time": "21:30 - 23:00", "title": "Research / Free Time" },
+      { "time": "23:00 - 00:00", "title": "Sleep" }
     ]
   },
   {
     "day": "Saturday",
     "events": [
-      { "time": "08:00 - 16:30", "title": "Work" }
+      { "time": "00:00 - 06:00", "title": "Sleep" },
+      { "time": "06:00 - 06:30", "title": "Brush Teeth & Face" },
+      { "time": "06:30 - 07:00", "title": "Morning Workout" },
+      { "time": "07:00 - 07:30", "title": "Cooking & Breakfast" },
+      { "time": "07:30 - 08:00", "title": "Shower & Dressing" },
+      { "time": "08:00 - 11:30", "title": "Work / Weekend Projects" },
+      { "time": "11:30 - 12:00", "title": "Lunch" },
+      { "time": "12:00 - 17:00", "title": "Work / Projects" },
+      { "time": "17:00 - 18:00", "title": "Nap / Rest" },
+      { "time": "18:30 - 20:00", "title": "Hangout" },
+      { "time": "20:00 - 22:00", "title": "Research and Coding" },
+      { "time": "22:00 - 23:00", "title": "Reading" },
+      { "time": "23:00 - 00:00", "title": "Sleep" }
     ]
   },
   {
     "day": "Sunday",
     "events": [
-      { "time": "09:00", "title": "Church" },
-      { "time": "14:00", "title": "Dating" },
-      { "time": "17:00", "title": "Fitness" }
+      { "time": "00:00 - 06:00", "title": "Sleep" },
+      { "time": "06:00 - 10:00", "title": "Morning Activity (Running / Cycling / Gym)" },
+      { "time": "10:00 - 10:30", "title": "Shower" },
+      { "time": "10:30 - 11:30", "title": "Cooking & Meal" },
+      { "time": "11:30 - 13:30", "title": "Nap / Rest" },
+      { "time": "13:30 - 14:30", "title": "Washing Clothes" },
+      { "time": "14:30 - 15:00", "title": "Prepare for Church" },
+      { "time": "15:00 - 17:00", "title": "Church Worship" },
+      { "time": "17:00 - 22:30", "title": "Date with Girlfriend" },
+      { "time": "23:00 - 00:00", "title": "Sleep" }
     ]
   }
 ]
