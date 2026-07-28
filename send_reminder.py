@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import urllib.request
@@ -39,16 +40,23 @@ def send_telegram_message(text):
         req = urllib.request.Request(url, data=payload)
         with urllib.request.urlopen(req) as response:
             print("Message sent successfully!")
+    else:
+        print("Error: Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID.")
+
+# Check for manual trigger flag
+is_manual_run = os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch'
+
+message_sent = False
 
 # 1. Check for upcoming events starting in 5 minutes
 for event in today_events:
     time_str = event.get('time', '')
-    # Extract start time (e.g. "08:00" from "08:00 - 11:30" or "08:00")
     start_time = time_str.split('-')[0].strip()
     
     if start_time == target_time:
         alert_msg = f"⏰ *Upcoming Activity in 5 Minutes!*\n\n• *{event['time']}*: {event['title']}"
         send_telegram_message(alert_msg)
+        message_sent = True
 
 # 2. Daily morning overview at 06:00 AM
 if current_hm == "06:00":
@@ -56,3 +64,11 @@ if current_hm == "06:00":
     for event in today_events:
         overview_msg += f"• *{event['time']}*: {event['title']}\n"
     send_telegram_message(overview_msg)
+    message_sent = True
+
+# 3. If manually triggered and no event matched, send a test summary!
+if is_manual_run and not message_sent:
+    test_msg = f"✅ *Manual Test Successful!*\n\nConnected to Telegram. Here is today's ({today}) schedule:\n\n"
+    for event in today_events:
+        test_msg += f"• *{event['time']}*: {event['title']}\n"
+    send_telegram_message(test_msg)
