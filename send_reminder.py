@@ -1,6 +1,7 @@
 import json
 import os
 from datetime import datetime
+from zoneinfo import ZoneInfo
 import urllib.request
 import urllib.parse
 
@@ -8,8 +9,9 @@ import urllib.parse
 with open('schedule.json', 'r') as f:
     schedule = json.load(f)
 
-# Get today's day of the week (e.g., "Monday")
-today = datetime.now().strftime('%A')
+# Get today's day of the week in Indochina Time (ICT / UTC+7)
+local_tz = ZoneInfo("Asia/Bangkok")
+today = datetime.now(local_tz).strftime('%A')
 
 # Find today's events
 today_events = None
@@ -20,7 +22,7 @@ for day_data in schedule:
 
 # Format message
 if today_events:
-    message = f"📅 *Schedule for {today}*\n\n"
+    message = f"🌅 *Daily Schedule for {today}*\n\n"
     for event in today_events:
         message += f"• *{event['time']}*: {event['title']}\n"
 else:
