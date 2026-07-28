@@ -1,0 +1,25 @@
+name: Daily Schedule Reminder
+
+on:
+  schedule:
+    # Runs every day at 00:00 UTC (7:00 AM ICT)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allows you to run it manually anytime
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run schedule script
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python send_reminder.py
