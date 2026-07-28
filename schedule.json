@@ -1,0 +1,51 @@
+[
+  {
+    "day": "Monday",
+    "events": [
+      { "time": "08:00 - 16:30", "title": "Work" },
+      { "time": "18:00", "title": "Guitar Practice" }
+    ]
+  },
+  {
+    "day": "Tuesday",
+    "events": [
+      { "time": "08:00 - 16:30", "title": "Work" },
+      { "time": "18:00", "title": "Football / Soccer" }
+    ]
+  },
+  {
+    "day": "Wednesday",
+    "events": [
+      { "time": "08:00 - 16:30", "title": "Work" },
+      { "time": "18:00", "title": "Reading" }
+    ]
+  },
+  {
+    "day": "Thursday",
+    "events": [
+      { "time": "08:00 - 16:30", "title": "Work" },
+      { "time": "18:00", "title": "Guitar Practice" }
+    ]
+  },
+  {
+    "day": "Friday",
+    "events": [
+      { "time": "08:00 - 16:30", "title": "Work" },
+      { "time": "18:00", "title": "Hanging out" }
+    ]
+  },
+  {
+    "day": "Saturday",
+    "events": [
+      { "time": "08:00 - 16:30", "title": "Work" }
+    ]
+  },
+  {
+    "day": "Sunday",
+    "events": [
+      { "time": "09:00", "title": "Church" },
+      { "time": "14:00", "title": "Dating" },
+      { "time": "17:00", "title": "Fitness" }
+    ]
+  }
+]
