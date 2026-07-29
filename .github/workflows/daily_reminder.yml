@@ -1,36 +1,38 @@
-name: Event Reminder Workflow
+name: Daily Schedule Reminder
 
 on:
   schedule:
-    # 05:55 ICT (22:55 UTC) - Morning Overview / Brush Teeth (06:00 ICT)
-    - cron: '55 22 * * *'
-    # 06:25 ICT (23:25 UTC) - Morning Workout (06:30 ICT) / Thursday Fellowship prep
+    # 06:00 AM ICT (23:00 UTC previous day) - FULL DAY OVERVIEW
+    - cron: '0 23 * * *'
+
+    # 5-MINUTE BEFORE ACTIVITY ALERTS (UTC times = ICT - 7 hours):
+    # 06:25 ICT (23:25 UTC) - Before Morning Workout (06:30)
     - cron: '25 23 * * *'
-    # 06:55 ICT (23:55 UTC) - Cooking & Breakfast (07:00 ICT)
+    # 06:55 ICT (23:55 UTC) - Before Cooking & Breakfast (07:00)
     - cron: '55 23 * * *'
-    # 07:25 ICT (00:25 UTC) - Shower & Dressing (07:30 ICT)
+    # 07:25 ICT (00:25 UTC) - Before Shower & Prep (07:30)
     - cron: '25 0 * * *'
-    # 07:55 ICT (00:55 UTC) - Work Morning Session (08:00 ICT)
+    # 07:55 ICT (00:55 UTC) - Before Work Morning Session (08:00)
     - cron: '55 0 * * *'
-    # 11:25 ICT (04:25 UTC) - Lunch (11:30 ICT)
+    # 11:25 ICT (04:25 UTC) - Before Lunch (11:30)
     - cron: '25 4 * * *'
-    # 11:55 ICT (04:55 UTC) - Work Afternoon Session (12:00 ICT)
+    # 11:55 ICT (04:55 UTC) - Before Work Afternoon Session (12:00)
     - cron: '55 4 * * *'
-    # 16:55 ICT (09:55 UTC) - Nap / Rest (17:00 ICT)
+    # 16:55 ICT (09:55 UTC) - Before Nap / Rest (17:00)
     - cron: '55 9 * * *'
-    # 17:55 ICT (10:55 UTC) - Evening Workout / Prep (18:00 ICT)
+    # 17:55 ICT (10:55 UTC) - Before Evening Workout (18:00)
     - cron: '55 10 * * *'
-    # 18:25 ICT (11:25 UTC) - Evening Activities / Football / Guitar (18:30 ICT)
+    # 18:25 ICT (11:25 UTC) - Before Evening Activities / Football / Guitar (18:30)
     - cron: '25 11 * * *'
-    # 19:25 ICT (12:25 UTC) - Soccer on Friday (19:30 ICT)
+    # 19:25 ICT (12:25 UTC) - Before Soccer (Friday) (19:30)
     - cron: '25 12 * * *'
-    # 19:55 ICT (12:55 UTC) - Research and Coding / Hangout (20:00 ICT)
+    # 19:55 ICT (12:55 UTC) - Before Research & Coding / Hangout (20:00)
     - cron: '55 12 * * *'
-    # 20:25 ICT (13:25 UTC) - Research and Coding on Tuesday (20:30 ICT)
+    # 20:25 ICT (13:25 UTC) - Before Research & Coding (Tuesday) (20:30)
     - cron: '25 13 * * *'
-    # 21:55 ICT (14:55 UTC) - Reading (22:00 ICT)
+    # 21:55 ICT (14:55 UTC) - Before Reading (22:00)
     - cron: '55 14 * * *'
-    # 22:55 ICT (15:55 UTC) - Sleep prep (23:00 ICT)
+    # 22:55 ICT (15:55 UTC) - Before Sleep (23:00)
     - cron: '55 15 * * *'
 
   workflow_dispatch:
