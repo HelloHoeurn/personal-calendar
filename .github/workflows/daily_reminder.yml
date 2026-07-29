@@ -2,8 +2,37 @@ name: Event Reminder Workflow
 
 on:
   schedule:
-    # Runs every 5 minutes
-    - cron: '*/5 * * * *'
+    # 05:55 ICT (22:55 UTC) - Morning Overview / Brush Teeth (06:00 ICT)
+    - cron: '55 22 * * *'
+    # 06:25 ICT (23:25 UTC) - Morning Workout (06:30 ICT) / Thursday Fellowship prep
+    - cron: '25 23 * * *'
+    # 06:55 ICT (23:55 UTC) - Cooking & Breakfast (07:00 ICT)
+    - cron: '55 23 * * *'
+    # 07:25 ICT (00:25 UTC) - Shower & Dressing (07:30 ICT)
+    - cron: '25 0 * * *'
+    # 07:55 ICT (00:55 UTC) - Work Morning Session (08:00 ICT)
+    - cron: '55 0 * * *'
+    # 11:25 ICT (04:25 UTC) - Lunch (11:30 ICT)
+    - cron: '25 4 * * *'
+    # 11:55 ICT (04:55 UTC) - Work Afternoon Session (12:00 ICT)
+    - cron: '55 4 * * *'
+    # 16:55 ICT (09:55 UTC) - Nap / Rest (17:00 ICT)
+    - cron: '55 9 * * *'
+    # 17:55 ICT (10:55 UTC) - Evening Workout / Prep (18:00 ICT)
+    - cron: '55 10 * * *'
+    # 18:25 ICT (11:25 UTC) - Evening Activities / Football / Guitar (18:30 ICT)
+    - cron: '25 11 * * *'
+    # 19:25 ICT (12:25 UTC) - Soccer on Friday (19:30 ICT)
+    - cron: '25 12 * * *'
+    # 19:55 ICT (12:55 UTC) - Research and Coding / Hangout (20:00 ICT)
+    - cron: '55 12 * * *'
+    # 20:25 ICT (13:25 UTC) - Research and Coding on Tuesday (20:30 ICT)
+    - cron: '25 13 * * *'
+    # 21:55 ICT (14:55 UTC) - Reading (22:00 ICT)
+    - cron: '55 14 * * *'
+    # 22:55 ICT (15:55 UTC) - Sleep prep (23:00 ICT)
+    - cron: '55 15 * * *'
+
   workflow_dispatch:
 
 jobs:
