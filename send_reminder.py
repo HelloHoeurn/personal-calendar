@@ -52,8 +52,10 @@ if now.hour == 6 and 0 <= now.minute <= 15 and not is_manual_run:
 
 # ----------------------------------------------------
 # 2. Automated 5-Minute Warning Before Each Activity
+# (skipped if the full-day overview already fired this run, to avoid
+#  double-messaging when the first event of the day starts at 06:00)
 # ----------------------------------------------------
-if not is_manual_run:
+elif not is_manual_run:
     for event in today_events:
         time_str = event.get('time', '')
         start_time_str = time_str.split('-')[0].strip()

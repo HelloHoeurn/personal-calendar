@@ -12,9 +12,9 @@
       { "time": "12:00 - 17:00", "title": "Work (Afternoon session)" },
       { "time": "17:00 - 18:00", "title": "Nap" },
       { "time": "18:00 - 18:30", "title": "Workout" },
-      { "time": "18:30 - 19:30", "title": "Shower & Dinner" },
       { "time": "18:30 - 20:00", "title": "Guitar Lesson (General Songs)" },
-      { "time": "20:00 - 22:00", "title": "Research and Coding" },
+      { "time": "20:00 - 20:30", "title": "Shower & Dinner" },
+      { "time": "20:30 - 22:00", "title": "Research and Coding" },
       { "time": "22:00 - 23:00", "title": "Reading" },
       { "time": "23:00 - 00:00", "title": "Sleep" }
     ]
@@ -51,8 +51,8 @@
       { "time": "12:00 - 17:00", "title": "Work (Afternoon session)" },
       { "time": "17:00 - 18:00", "title": "Nap" },
       { "time": "18:00 - 18:30", "title": "Workout" },
-      { "time": "18:54 - 20:00", "title": "Reading" },
-      { "time": "19:20 - 22:00", "title": "Research and Coding" },
+      { "time": "18:30 - 20:00", "title": "Reading" },
+      { "time": "20:00 - 22:00", "title": "Research and Coding" },
       { "time": "22:00 - 23:00", "title": "Free / Relaxation" },
       { "time": "23:00 - 00:00", "title": "Sleep" }
     ]
