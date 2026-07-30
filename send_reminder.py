@@ -42,8 +42,10 @@ message_sent = False
 
 # ----------------------------------------------------
 # 1. 06:00 AM Full-Day Schedule Overview
+# (window is 0-4 min so exactly one 5-minute tick catches it, even if that
+#  tick is a little late; the next tick at :05 won't re-match)
 # ----------------------------------------------------
-if now.hour == 6 and 0 <= now.minute <= 15 and not is_manual_run:
+if now.hour == 6 and 0 <= now.minute <= 4 and not is_manual_run:
     overview_msg = f"🌅 *Good Morning! Here is your full schedule for {today}:*\n\n"
     for event in today_events:
         overview_msg += f"• *{event['time']}*: {event['title']}\n"
@@ -67,8 +69,11 @@ elif not is_manual_run:
             diff_seconds = (event_time - now).total_seconds()
             diff_minutes = diff_seconds / 60.0
             
-            # Catch events starting within 15 minutes or started up to 5 minutes ago
-            if -5 <= diff_minutes <= 15:
+            # With a 5-minute poll cadence, each event should be caught by exactly
+            # one tick: the one running 0-5 minutes before it starts. A tighter
+            # window here (vs. the old -5..15) avoids the same event firing twice
+            # across two consecutive ticks.
+            if 0 < diff_minutes <= 5:
                 next_alert = f"⏰ *Up Next in 5 Minutes!*\n\n• *{event['time']}*: {event['title']}"
                 send_telegram_message(next_alert)
                 message_sent = True
