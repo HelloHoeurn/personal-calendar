@@ -41,8 +41,8 @@ is_manual_run = os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch'
 message_sent = False
 
 # ----------------------------------------------------
-# 1. 06:00 AM Full-Day Schedule Overview
-# (window is 0-4 min so exactly one 5-minute tick catches it, even if that
+# 1. 06:00 AM Full-Day Schedule Overview (the only automated message per day)
+# (window is 0-4 min so exactly one poll tick catches it, even if that
 #  tick is a little late; the next tick at :05 won't re-match)
 # ----------------------------------------------------
 if now.hour == 6 and 0 <= now.minute <= 4 and not is_manual_run:
@@ -53,56 +53,12 @@ if now.hour == 6 and 0 <= now.minute <= 4 and not is_manual_run:
     message_sent = True
 
 # ----------------------------------------------------
-# 2. Automated 5-Minute Warning Before Each Activity
-# (skipped if the full-day overview already fired this run, to avoid
-#  double-messaging when the first event of the day starts at 06:00)
-# ----------------------------------------------------
-elif not is_manual_run:
-    for event in today_events:
-        time_str = event.get('time', '')
-        start_time_str = time_str.split('-')[0].strip()
-        
-        try:
-            event_hour, event_min = map(int, start_time_str.split(':'))
-            event_time = now.replace(hour=event_hour, minute=event_min, second=0, microsecond=0)
-            
-            diff_seconds = (event_time - now).total_seconds()
-            diff_minutes = diff_seconds / 60.0
-            
-            # With a 5-minute poll cadence, each event should be caught by exactly
-            # one tick: the one running 0-5 minutes before it starts. A tighter
-            # window here (vs. the old -5..15) avoids the same event firing twice
-            # across two consecutive ticks.
-            if 0 < diff_minutes <= 5:
-                next_alert = f"⏰ *Up Next in 5 Minutes!*\n\n• *{event['time']}*: {event['title']}"
-                send_telegram_message(next_alert)
-                message_sent = True
-                break
-        except Exception as e:
-            print(f"Error parsing event time: {e}")
-
-# ----------------------------------------------------
-# 3. MANUAL TEST RUN CONFIRMATION (Shows Code Update + Next Activity)
+# 2. MANUAL TEST RUN CONFIRMATION (shows the full schedule on demand,
+#    without counting as the automated daily send)
 # ----------------------------------------------------
 if is_manual_run:
-    # Find the next upcoming activity for today
-    next_event = None
+    test_msg = f"✅ *Code Update Test Successful!*\n\nBot is active for *{today}*.\n\n"
+    test_msg += "📋 *Today's Full Schedule:*\n\n"
     for event in today_events:
-        time_str = event.get('time', '')
-        start_time_str = time_str.split('-')[0].strip()
-        try:
-            event_hour, event_min = map(int, start_time_str.split(':'))
-            event_time = now.replace(hour=event_hour, minute=event_min, second=0, microsecond=0)
-            if event_time > now:
-                next_event = event
-                break
-        except Exception:
-            pass
-
-    test_msg = f"✅ *Code Update Test Successful!*\n\nBot is active for *{today}*.\n"
-    if next_event:
-        test_msg += f"\n📌 *Next Scheduled Activity:* \n• *{next_event['time']}*: {next_event['title']}"
-    else:
-        test_msg += "\n🎉 No more activities scheduled for today!"
-        
+        test_msg += f"• *{event['time']}*: {event['title']}\n"
     send_telegram_message(test_msg)
