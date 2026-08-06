@@ -5,6 +5,8 @@ from zoneinfo import ZoneInfo
 import urllib.request
 import urllib.parse
 
+STATE_FILE = 'last_sent_date.txt'
+
 # Load schedule data
 with open('schedule.json', 'r') as f:
     schedule = json.load(f)
@@ -13,6 +15,7 @@ with open('schedule.json', 'r') as f:
 local_tz = ZoneInfo("Asia/Bangkok")
 now = datetime.now(local_tz)
 today = now.strftime('%A')
+today_date_str = now.strftime('%Y-%m-%d')
 
 # Get today's events from JSON
 today_events = []
@@ -37,24 +40,42 @@ def send_telegram_message(text):
     else:
         print("Error: Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID.")
 
+def build_overview():
+    msg = f"🌅 *Good Morning! Here is your full schedule for {today}:*\n\n"
+    for event in today_events:
+        msg += f"• *{event['time']}*: {event['title']}\n"
+    return msg
+
 is_manual_run = os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch'
-message_sent = False
 
 # ----------------------------------------------------
-# 1. 06:00 AM Full-Day Schedule Overview (the only automated message per day)
-# (window is 0-4 min so exactly one poll tick catches it, even if that
-#  tick is a little late; the next tick at :05 won't re-match)
+# 1. 6 AM Full-Day Schedule Overview (the only automated message per day)
+#
+# GitHub Actions scheduled runs can be delayed well beyond their nominal
+# cron minute (observed delays of 30-45+ minutes), so instead of trying to
+# hit one exact narrow minute, this checks a whole hour-long window
+# (06:00-06:59 ICT) AND tracks whether today's message already went out via
+# a small state file. The workflow ticks several times during that hour;
+# whichever tick is the first to actually run sends the message and marks
+# today as done, so later ticks in the same hour are safely skipped and you
+# still get exactly one message, even under GitHub's scheduling drift.
 # ----------------------------------------------------
-if now.hour == 6 and 0 <= now.minute <= 4 and not is_manual_run:
-    overview_msg = f"🌅 *Good Morning! Here is your full schedule for {today}:*\n\n"
-    for event in today_events:
-        overview_msg += f"• *{event['time']}*: {event['title']}\n"
-    send_telegram_message(overview_msg)
-    message_sent = True
+if not is_manual_run:
+    already_sent_today = False
+    if os.path.exists(STATE_FILE):
+        with open(STATE_FILE, 'r') as f:
+            already_sent_today = f.read().strip() == today_date_str
+
+    if now.hour == 6 and not already_sent_today:
+        send_telegram_message(build_overview())
+        with open(STATE_FILE, 'w') as f:
+            f.write(today_date_str)
+        # Signal to the workflow that it should commit the updated state file.
+        print("STATE_UPDATED=true")
 
 # ----------------------------------------------------
 # 2. MANUAL TEST RUN CONFIRMATION (shows the full schedule on demand,
-#    without counting as the automated daily send)
+#    without touching the "already sent today" state)
 # ----------------------------------------------------
 if is_manual_run:
     test_msg = f"✅ *Code Update Test Successful!*\n\nBot is active for *{today}*.\n\n"
